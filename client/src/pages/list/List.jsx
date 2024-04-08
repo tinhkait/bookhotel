@@ -2,11 +2,12 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const List = () => {
   const location = useLocation();
@@ -15,7 +16,9 @@ const List = () => {
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
 
-  const {data, loading, error, refetch} = useFetch(`/hotel?city=${destination}`)
+  const {data, loading, error, refetch} = useFetch(`/api/v1/hotels?city=${destination}`)
+  
+console.log(data)
   return (
     <div>
       <Navbar />
@@ -89,16 +92,14 @@ const List = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-          </div>
+        {loading ? "loading" : (
+          <>
+            {data.map((item) => (
+              <SearchItem item={item} key={item._id} />
+            ))}
+          </>
+        )}
+      </div>
         </div>
       </div>
     </div>
