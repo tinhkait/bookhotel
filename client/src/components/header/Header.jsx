@@ -49,6 +49,9 @@ const Header = ({ type }) => {
 
   return (
     <div className="header">
+      <video autoPlay loop muted>
+    <source src="https://i.imgur.com/eKtXJTw.mp4" type="video/mp4" />
+  </video>
       <div
         className={
           type === "list" ? "headerContainer listMode" : "headerContainer"
@@ -61,37 +64,36 @@ const Header = ({ type }) => {
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
+            <span>Chuyến bay</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
-            <span>Car rentals</span>
+            <span>Cho thuê xe</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
+            <span>Điểm tham quan</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
+            <span>Taxi sân bay</span>
           </div>
         </div>
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+              Bạn muốn tìm khách sạn uy tín, chất lượng?
             </h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
+            Đến ngay với KPTHotel.com chúng tôi đã chọn lọc cho bạn tất cả các khách sạn 4 - 5 sao tốt nhất tại các tỉnh thành!
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+            <button className="headerBtn">Đăng nhập / Đăng ký</button>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
                   type="text"
-                  placeholder="Where are you going?"
+                  placeholder="Nhập tên tỉnh thành cần tìm khách sạn..."
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
                 />

@@ -6,17 +6,19 @@ import { createRoom, deleteRoom, getRoom, getRooms, updateRoom } from "../contro
 
 import {verifyAdmin} from "../ultils/verifyToken.js"
 
-//Create
-router.post("/:hotelid",  verifyAdmin, createRoom);
-//Update
+//CREATE
+router.post("/:hotelid", verifyAdmin, createRoom);
+
+//UPDATE
 
 router.put("/:id", verifyAdmin, updateRoom);
-
-//Delete
+//DELETE
 router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
-//Get All
+//GET
+
 router.get("/:id", getRoom);
+//GET ALL
 
 router.get("/", getRooms);
 
-export default router
+export default router;
